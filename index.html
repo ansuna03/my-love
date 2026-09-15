@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lttle Surprise for my Baby 💕</title>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Dancing+Script:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        /* 🌹 ROSE RAINFALL EFFECT */
+        @keyframes rose-rainfall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg) scale(0.3);
+                opacity: 0;
+            }
+            10% { opacity: 1; transform: translateY(0) rotate(90deg) scale(0.8); }
+            50% { transform: translateY(30vh) rotate(180deg) scale(1.1); opacity: 0.9; }
+            100% { transform: translateY(100vh) rotate(720deg) scale(0.4); opacity: 0; }
+        }
+
+        @keyframes zoom-gentle {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        @keyframes zoom-in-out { 0% { transform: scale(1); } 50% { transform: scale(1.15); } 100% { transform: scale(1); } }
+        @keyframes slide-left { from { opacity: 0; transform: translateX(-120px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes slide-right { from { opacity: 0; transform: translateX(120px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes float-heart { 0% { transform: translateY(100%) rotate(0deg) scale(0); opacity: 0; } 10% { opacity: 1; transform: translateY(80%) rotate(15deg) scale(1); } 50% { opacity: 0.8; transform: translateY(40%) rotate(-10deg) scale(1.1); } 90% { opacity: 0.3; transform: translateY(-10%) rotate(20deg) scale(0.8); } 100% { opacity: 0; transform: translateY(-20%) rotate(0deg) scale(0.5); } }
+        @keyframes pulse-glow { 0%, 100% { box-shadow: 0 0 20px rgba(255, 105, 180, 0.4), 0 0 40px rgba(255, 105, 180, 0.2); } 50% { box-shadow: 0 0 30px rgba(255, 105, 180, 0.7), 0 0 60px rgba(255, 105, 180, 0.4), 0 0 90px rgba(255, 105, 180, 0.2); } }
+        @keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+        @keyframes fade-up { from { opacity: 0; transform: translateY(40px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        @keyframes burst-heart { 0% { transform: scale(0) rotate(-15deg); opacity: 0; } 50% { transform: scale(1.3) rotate(5deg); opacity: 1; } 100% { transform: scale(1) rotate(0deg); opacity: 1; } }
+        @keyframes sparkle { 0%, 100% { opacity: 0; transform: scale(0); } 50% { opacity: 1; transform: scale(1); } }
+        @keyframes arrow-bounce { 0%, 100% { transform: translateY(0) rotate(-10deg); } 50% { transform: translateY(-15px) rotate(10deg); } }
+        @keyframes gentle-float { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-8px) rotate(2deg); } }
+        @keyframes soft-glow { 0%, 100% { box-shadow: 0 0 10px rgba(255, 105, 180, 0.3), 0 0 20px rgba(255, 105, 180, 0.15); } 50% { box-shadow: 0 0 20px rgba(255, 105, 180, 0.5), 0 0 40px rgba(255, 105, 180, 0.25); } }
+        @keyframes countdown-float { 0% { transform: scale(0.5) translateY(20px); opacity: 0; } 50% { transform: scale(1.1) translateY(-5px); opacity: 1; } 100% { transform: scale(1) translateY(0); opacity: 1; } }
+
+        .rose-petal {
+            position: fixed; pointer-events: none; z-index: 100;
+            font-size: 24px; animation: rose-rainfall 4s linear infinite;
+            filter: drop-shadow(0 2px 4px rgba(255, 20, 147, 0.5));
+        }
+
+        .floating-heart { position: absolute; animation: float-heart cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; pointer-events: none; z-index: 1; }
+        .glow-btn { animation: soft-glow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite; transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+        .glow-btn:hover { animation-duration: 1.5s; transform: scale(1.05); }
+        .shimmer-text { background: linear-gradient(90deg, #ff6b9d, #ffffff, #c44569, #ff6b9d); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shimmer 4s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        .reveal-item { opacity: 0; animation: fade-up 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; transform-origin: center bottom; }
+        .love-card-box { opacity: 0; }
+        .card-show { opacity: 1; animation: fade-up 1s forwards; }
+        .card-left { opacity: 1; animation: slide-left 1s forwards; }
+        .card-right { opacity: 1; animation: slide-right 1s forwards; }
+        .burst { animation: burst-heart 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards; }
+        .sparkle-dot { position: absolute; width: 6px; height: 6px; border-radius: 50%; background: #fde68a; animation: sparkle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        .curved-arrow { animation: arrow-bounce 3s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        .zoom-scroll { animation: zoom-in-out 2s ease-in-out infinite; }
+        .zoom-gentle { animation: zoom-gentle 2.5s ease-in-out infinite; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        .snap-start { scroll-snap-align: start; scroll-behavior: smooth; }
+        button { transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+        button:hover { transform: translateY(-2px); }
+        button:active { transform: translateY(0); }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        .font-dancing { font-family: 'Dancing Script', cursive; }
+        .font-cormorant { font-family: 'Cormorant Garamond', serif; }
+        .drop-shadow-2xl { filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15)); }
+        .drop-shadow-lg { filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1)); }
+        .letter-spacing-1 { letter-spacing: 0.05em; }
+        .letter-spacing-2 { letter-spacing: 0.1em; }
+        .uniq { margin: 12px; padding-top: 5px; }
+    </style>
+</head>
+
+<body class="h-screen w-screen overflow-hidden relative bg-gradient-to-br from-pink-100 via-purple-100 to-pink-200 scrollbar-hide">
+    <!-- Countdown Loader -->
+    <div id="loader" class="fixed inset-0 flex items-center justify-center bg-gradient-to-br from-pink-200 via-purple-200 to-pink-300 z-50">
+        <div id="countdown" class="text-8xl md:text-9xl font-bold text-pink-700 drop-shadow-2xl">3</div>
+    </div>
+
+    <!-- Hearts & Sparkles -->
+    <div id="hearts-container" class="absolute inset-0 overflow-hidden pointer-events-none"></div>
+    <div id="sparkles" class="absolute inset-0 overflow-hidden pointer-events-none"></div>
+
+    <!-- Scroll Container -->
+    <div class="h-screen w-screen overflow-y-auto snap-y snap-mandatory scrollbar-hide scroll-smooth">
+        <!-- Mystery Section -->
+        <section class="relative z-10 flex flex-col items-center justify-center h-screen px-6 text-center snap-start min-h-screen">
+            <div class="mb-6 text-6xl md:text-7xl" style="animation: burst-heart 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;">💌</div>
+            <h1 id="mystery-heading" class="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight font-playfair text-pink-800 drop-shadow-2xl gentle-float" style="animation: gentle-float 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;">
+                I have something special for you my baby...
+            </h1>
+            <p class="text-lg md:text-xl lg:text-2xl mb-10 italic font-cormorant text-pink-700 opacity-90 drop-shadow-lg">Are you ready to see it? ✨</p>
+            <button id="reveal-btn" class="glow-btn relative px-12 py-6 md:px-16 md:py-7 rounded-3xl text-white text-xl md:text-2xl font-semibold tracking-wide cursor-pointer border-0 shadow-2xl font-dancing bg-gradient-to-r from-pink-500 via-rose-500 to-purple-600 border-4 border-white/30">
+                <span id="btn-text">💖 Click to see the surprise 💖</span>
+            </button>
+        </section>
+
+        <!-- Reveal Section -->
+        <section class="relative z-10 flex flex-col items-center justify-center h-screen px-6 text-center snap-start bg-gradient-to-b from-white/70 to-transparent min-h-screen uniq">
+            <div class="flex flex-col items-center justify-center text-center max-w-4xl w-full h-full gap-8 px-4">
+                <div class="reveal-item text-7xl md:text-8xl mb-6 md:mb-8 zoom-gentle" style="animation-delay: 0.3s;">💝</div>
+                <div class="reveal-item mb-4 md:mb-6 flex justify-center items-center gap-4 md:gap-6" style="animation-delay: 0.5s;">
+                    <span class="text-6xl md:text-7xl zoom-gentle">❤️</span><span class="text-4xl md:text-5xl zoom-gentle">💕</span><span class="text-6xl md:text-7xl zoom-gentle">❤️</span>
+                </div>
+                <h2 id="love-heading" class="reveal-item shimmer-text text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 md:mb-8 leading-tight font-dancing bg-gradient-to-r from-rose-500 via-pink-400 to-purple-500 bg-clip-text text-transparent drop-shadow-2xl max-w-3xl mx-auto" style="animation-delay: 0.8s;">
+                    You are the most special person in my life Jahnavi.
+                </h2>
+                <div class="reveal-item w-32 h-1 mx-auto mb-6 md:mb-8 rounded-full bg-gradient-to-r from-rose-500 via-pink-400 to-purple-500" style="animation-delay: 1.2s;"></div>
+                <p id="sub-text" class="reveal-item text-xl md:text-2xl lg:text-3xl italic mb-8 md:mb-12 font-cormorant text-pink-800 drop-shadow-lg max-w-2xl leading-relaxed mx-auto" style="animation-delay: 1.5s;">
+                    Every moment with you is a ethereal dream, and I cherish every second we spend together. You are my sunshine, my love, and my everything. I am so grateful to have you in my life, and I promise to love you more with each passing day.
+                </p>
+                <div class="reveal-item flex gap-3 md:gap-4 text-4xl md:text-5xl lg:text-6xl" style="animation-delay: 2.2s;">
+                    <span class="burst zoom-gentle" style="animation-delay: 2.3s;">🌹</span><span class="burst zoom-gentle" style="animation-delay: 2.5s;">💗</span><span class="burst zoom-gentle" style="animation-delay: 2.7s;">✨</span><span class="burst zoom-gentle" style="animation-delay: 2.9s;">💗</span><span class="burst zoom-gentle" style="animation-delay: 3.1s;">🌹</span>
+                </div>
+                <p class="reveal-item text-base md:text-lg mt-10 md:mt-12 tracking-widest uppercase font-playfair text-pink-700 drop-shadow-md letter-spacing-1 md:letter-spacing-2" style="animation-delay: 3.5s;">
+                    With all my love, forever yours , I LOVE YOU MORE AND MORE MY BABY!! 💕
+                </p>
+                <div class="flex flex-col items-center gap-4 mt-12 md:mt-16 reveal-item" style="animation-delay: 4s;">
+                    <div class="text-4xl md:text-5xl curved-arrow">
+                        <svg class="w-16 h-16 md:w-20 md:h-20 mx-auto text-rose-400 drop-shadow-lg zoom-gentle" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                        </svg>
+                    </div>
+                    <button id="scroll-down-btn" class="zoom-scroll text-lg font-light text-pink-600 bg-gradient-to-r from-pink-100 to-purple-100 px-6 py-3 rounded-full tracking-wide shadow-lg hover:scale-105 transition duration-300">Scroll Down</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Love Cards with Rose Rainfall -->
+        <section class="relative z-10 flex flex-col items-center justify-center h-screen px-6 text-center snap-start bg-gradient-to-t from-white/80 via-pink-50 to-transparent min-h-screen">
+            <button id="love-card-btn" class="mb-8 px-12 py-6 rounded-3xl text-white text-xl md:text-2xl font-semibold tracking-wide cursor-pointer border-0 shadow-2xl font-dancing bg-gradient-to-r from-purple-500 via-pink-500 to-rose-500 border-4 border-white/30 glow-btn">
+                💌 Click Me
+            </button>
+            <div class="flex flex-col items-center justify-center mt-10 gap-6 relative">
+                <div id="card1" class="love-card-box w-72 bg-white/70 backdrop-blur-md rounded-2xl shadow-xl p-6 text-center">
+                    <div class="text-3xl mb-2 zoom-gentle">💗</div>
+                    <p class="text-pink-700 font-cormorant text-lg">You are the best thing that ever happened to me and ilysm i don't want to see you sad!!!</p>
+                </div>
+                <div id="card2" class="love-card-box w-72 bg-white/70 backdrop-blur-md rounded-2xl shadow-xl p-6 text-center">
+                    <div class="text-3xl mb-2 zoom-gentle">🌸</div>
+                    <p class="text-pink-700 font-cormorant text-lg">If you ever feel sad or upset i am one text away to be with you baby.</p>
+                </div>
+                <div id="card3" class="love-card-box w-72 bg-white/70 backdrop-blur-md rounded-2xl shadow-xl p-6 text-center">
+                    <div class="text-3xl mb-2 zoom-gentle">💖</div>
+                    <p class="text-pink-700 font-cormorant text-lg">I don't need anything else, I just need you in my life forever and if you ever need someone to talk to, I am here for you baby i won't leave you like he did!!!</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Floating hearts
+        function spawnHeart() {
+            const container = document.getElementById('hearts-container');
+            if (!container) return;
+            const heart = document.createElement('div');
+            heart.className = 'floating-heart';
+            const hearts = ['❤️','💕','💖','💗','🩷','♥️','💝','🌸'];
+            heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.style.fontSize = (16 + Math.random() * 20) + 'px';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (7 + Math.random() * 5) + 's';
+            heart.style.animationDelay = Math.random() * 3 + 's';
+            container.appendChild(heart);
+            setTimeout(() => heart.remove(), 15000);
+        }
+        for (let i = 0; i < 12; i++) setTimeout(spawnHeart, i * 400);
+        setInterval(spawnHeart, 1200);
+
+        // Sparkles
+        function createSparkles() {
+            const container = document.getElementById('sparkles');
+            for (let i = 0; i < 25; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'sparkle-dot';
+                dot.style.left = Math.random() * 100 + '%';
+                dot.style.top = Math.random() * 100 + '%';
+                dot.style.animationDelay = Math.random() * 4 + 's';
+                dot.style.animationDuration = (1.5 + Math.random() * 2) + 's';
+                container.appendChild(dot);
+            }
+        }
+        createSparkles();
+
+        // 🌹 ROSE RAINFALL FUNCTION
+        function startRoseRainfall(cardRect) {
+            const roses = ['🌹','🌹','🌺','🌸','💐','🌷','🌺','🌹'];
+            const rainDuration = 3000; // 3 seconds of rain per card
+            
+            const rainInterval = setInterval(() => {
+                const petal = document.createElement('div');
+                petal.className = 'rose-petal';
+                petal.innerHTML = roses[Math.floor(Math.random() * roses.length)];
+                
+                // Start above card area
+                petal.style.left = (cardRect.left + Math.random() * cardRect.width) + 'px';
+                petal.style.top = (cardRect.top - 50) + 'px';
+                petal.style.animationDuration = (3 + Math.random() * 2) + 's';
+                petal.style.animationDelay = '0s';
+                
+                document.body.appendChild(petal);
+                setTimeout(() => petal.remove(), 6000);
+            }, 100); // New petal every 100ms
+
+            setTimeout(() => clearInterval(rainInterval), rainDuration);
+        }
+
+        // Reveal surprise
+        let revealed = false;
+        document.getElementById('reveal-btn').addEventListener('click', () => {
+            if (revealed) return; revealed = true;
+            for (let i = 0; i < 25; i++) setTimeout(spawnHeart, i * 100);
+            setTimeout(() => document.querySelector('.overflow-y-auto').scrollTo({top: window.innerHeight, behavior: 'smooth'}), 300);
+        });
+
+        // Cards with Rose Rainfall
+        document.getElementById('love-card-btn').addEventListener('click', () => {
+            setTimeout(() => {
+                const c1 = document.getElementById('card1');
+                c1.classList.add('card-show');
+                const rect1 = c1.getBoundingClientRect();
+                startRoseRainfall(rect1);
+            }, 2000);
+
+            setTimeout(() => {
+                const c2 = document.getElementById('card2');
+                c2.classList.add('card-left');
+                const rect2 = c2.getBoundingClientRect();
+                startRoseRainfall(rect2);
+            }, 4000);
+
+            setTimeout(() => {
+                const c3 = document.getElementById('card3');
+                c3.classList.add('card-right');
+                const rect3 = c3.getBoundingClientRect();
+                startRoseRainfall(rect3);
+            }, 6000);
+        });
+
+        // Scroll down
+        document.getElementById('scroll-down-btn').addEventListener('click', () => {
+            document.querySelector('.overflow-y-auto').scrollTo({top: window.innerHeight * 2, behavior: 'smooth'});
+        });
+
+        // Fonts & Icons
+        const style = document.createElement('style');
+        style.textContent = `.font-playfair { font-family: 'Playfair Display', serif; }
+            .font-dancing { font-family: 'Dancing Script', cursive; }
+            .font-cormorant { font-family: 'Cormorant Garamond', serif; }
+            .drop-shadow-2xl { filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15)); }
+            .drop-shadow-lg { filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1)); }
+            .letter-spacing-1 { letter-spacing: 0.05em; }
+            .letter-spacing-2 { letter-spacing: 0.1em; }`;
+        document.head.appendChild(style);
+        lucide.createIcons();
+
+        // Countdown
+        let count = 3;
+        const countdownEl = document.getElementById('countdown');
+        const loader = document.getElementById('loader');
+        const countdownInterval = setInterval(() => {
+            count--;
+            if (count > 0) {
+                countdownEl.textContent = count;
+                countdownEl.style.animation = 'none'; void countdownEl.offsetWidth;
+                countdownEl.style.animation = 'countdown-float 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards';
+            } else {
+                countdownEl.textContent = '💖';
+                clearInterval(countdownInterval);
+                setTimeout(() => {
+                    loader.style.opacity = '0';
+                    setTimeout(() => { loader.style.display = 'none'; document.body.style.overflow = 'auto'; }, 1200);
+                }, 1000);
+            }
+        }, 1200);
+    </script>
+</body>
+</html>
